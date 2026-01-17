@@ -1,22 +1,50 @@
-/* Cart Sidebar */
-.cart-sidebar {
+/* Cart Modal */
+.cart-modal-overlay {
   position: fixed;
-  right: 0px;
-  top: 180px;
-  height: 100vh;
-  width: 380px;
-  border-radius: 16px;
-  background: white;
-  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15);
-  z-index: 1099;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1098;
+  backdrop-filter: blur(4px);
   display: flex;
-  flex-direction: column;
-  transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
 }
 
-.cart-sidebar.show {
-  transform: translateX(0);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cart-modal-container {
+  background: white;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 95%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1099;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .cart-header {
@@ -89,6 +117,7 @@
   padding: 1.75rem;
   border-top: 2px solid #e2e8f0;
   background-color: #A4B494;
+  border-radius: 0 0 16px 16px;
 }
 
 .cart-footer .d-flex {
@@ -137,6 +166,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1098;
   backdrop-filter: blur(3px);
+  display: none;
 }
 
 /* Floating Cart Button */
@@ -214,10 +244,10 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .cart-sidebar {
-    width: 100%;
-    max-width: 280px;
-    height: 80vh;
+  .cart-modal-container {
+    max-width: 450px;
+    width: 90%;
+    max-height: 80vh;
   }
 
   .cart-header {
@@ -255,10 +285,10 @@
 }
 
 @media (max-width: 576px) {
-  .cart-sidebar {
+  .cart-modal-container {
     max-width: 100%;
-    width: 90vw;
-    height: 75vh;
+    width: 95%;
+    max-height: 85vh;
   }
 
   .cart-header {

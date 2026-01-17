@@ -19,11 +19,20 @@ function App() {
 function AppContent() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    // Load cart from localStorage on initialization
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [cartOpen, setCartOpen] = useState(false);
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   // Fetch products from API
   useEffect(() => {
@@ -70,6 +79,11 @@ function AppContent() {
     setCart(cart.filter((item) => item.id !== productId));
   };
 
+  // Handle clear cart
+  const handleClearCart = () => {
+    setCart([]);
+  };
+
   // Handle view product
   const handleViewProduct = (product) => {
     setSelectedProduct(product);
@@ -92,6 +106,7 @@ function AppContent() {
         cartOpen={cartOpen}
         onToggleCart={handleToggleCart}
         onRemoveFromCart={handleRemoveFromCart}
+        onClearCart={handleClearCart}
       />
 
       <Routes>

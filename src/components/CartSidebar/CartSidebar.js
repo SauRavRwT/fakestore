@@ -2,12 +2,27 @@ import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import "./CartSidebar.css";
 
-function CartSidebar({ cart, cartOpen, onToggleCart, onRemoveFromCart }) {
+function CartSidebar({
+  cart,
+  cartOpen,
+  onToggleCart,
+  onRemoveFromCart,
+  onClearCart,
+}) {
   const cartTotal = cart.reduce((sum, item) => sum + item.quantity, 0);
   const cartPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
+
+  // Handle checkout
+  const handleCheckout = () => {
+    alert("Thank you for your purchase!");
+    // Clear cart from state and localStorage
+    localStorage.removeItem("cart");
+    onClearCart();
+    onToggleCart(false);
+  };
 
   return (
     <>
@@ -68,7 +83,12 @@ function CartSidebar({ cart, cartOpen, onToggleCart, onRemoveFromCart }) {
               <strong>Total:</strong>
               <strong className="text-success">${cartPrice.toFixed(2)}</strong>
             </div>
-            <button className="btn btn-success w-100 mb-2">Checkout</button>
+            <button
+              className="btn btn-success w-100 mb-2"
+              onClick={handleCheckout}
+            >
+              Checkout
+            </button>
             <button
               className="btn btn-secondary w-100"
               onClick={() => onToggleCart(false)}

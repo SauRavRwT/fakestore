@@ -1,11 +1,14 @@
-import React from 'react';
-import { FaShoppingCart, FaTrash } from 'react-icons/fa';
+import React from "react";
+import { FaShoppingCart, FaTrash } from "react-icons/fa";
 
 function Cart({ items, onRemoveItem, onClose, cartOpen = true }) {
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
 
   return (
-    <div className="cart-sidebar" style={{ width: cartOpen ? '350px' : '0' }}>
+    <div className="cart-sidebar" style={{ width: cartOpen ? "350px" : "0" }}>
       <div className="cart-header">
         <h5>
           <FaShoppingCart /> Shopping Cart ({items.length})

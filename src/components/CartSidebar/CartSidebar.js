@@ -6,7 +6,7 @@ function CartSidebar({ cart, cartOpen, onToggleCart, onRemoveFromCart }) {
   const cartTotal = cart.reduce((sum, item) => sum + item.quantity, 0);
   const cartPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0
+    0,
   );
 
   return (
@@ -41,6 +41,11 @@ function CartSidebar({ cart, cartOpen, onToggleCart, onRemoveFromCart }) {
               <div key={item.id} className="cart-item">
                 <div className="d-flex justify-content-between align-items-start">
                   <div className="flex-grow-1">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="img-fluid cart-item-image"
+                    />
                     <p className="mb-1 small cart-item-title">{item.title}</p>
                     <p className="mb-0 text-success small">
                       ${item.price.toFixed(2)} x {item.quantity}
@@ -76,10 +81,7 @@ function CartSidebar({ cart, cartOpen, onToggleCart, onRemoveFromCart }) {
 
       {/* Cart overlay */}
       {cartOpen && (
-        <div
-          className="cart-overlay"
-          onClick={() => onToggleCart(false)}
-        ></div>
+        <div className="cart-overlay" onClick={() => onToggleCart(false)}></div>
       )}
     </>
   );

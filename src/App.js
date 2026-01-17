@@ -10,7 +10,7 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/fakestore/">
       <AppContent />
     </Router>
   );

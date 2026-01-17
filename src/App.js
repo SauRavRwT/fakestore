@@ -5,7 +5,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import About from "./components/About/About";
-import CartSidebar from "./components/CartSidebar/CartSidebar";
+import CartSidebar from "./components/CartModal/CartModal";
 import Footer from "./components/Footer/Footer";
 
 function App() {

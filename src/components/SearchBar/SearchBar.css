@@ -1,0 +1,60 @@
+/* Search Bar */
+.search-bar-container {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  animation: slideInUp 0.8s ease-out 0.1s both;
+}
+
+.search-bar-container .input-group {
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.search-bar-container .input-group:hover,
+.search-bar-container .input-group:focus-within {
+  border-color: #519872;
+  box-shadow: 0 20px 50px rgba(81, 152, 114, 0.25);
+  transform: translateY(-4px);
+}
+
+.search-bar-container .input-group-text {
+  background-color: #3B5249 !important;
+  border: none !important;
+  color: white !important;
+  font-size: 1.1rem;
+  padding: 0 1.25rem;
+}
+
+.search-bar-container input.form-control {
+  border: none !important;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  background: white;
+}
+
+.search-bar-container input.form-control::placeholder {
+  color: #A4B494;
+  font-weight: 500;
+}
+
+.search-bar-container input.form-control:focus {
+  box-shadow: none !important;
+  background: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-bar-container {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .search-bar-container {
+    max-width: 100%;
+  }
+}

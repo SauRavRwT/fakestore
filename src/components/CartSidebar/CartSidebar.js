@@ -1,5 +1,6 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import "./CartSidebar.css";
 
 function CartSidebar({ cart, cartOpen, onToggleCart, onRemoveFromCart }) {
   const cartTotal = cart.reduce((sum, item) => sum + item.quantity, 0);

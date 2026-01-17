@@ -3,10 +3,10 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import About from "./components/About";
-import CartSidebar from "./components/CartSidebar";
-import Footer from "./components/Footer";
+import HomePage from "./components/HomePage/HomePage";
+import About from "./components/About/About";
+import CartSidebar from "./components/CartSidebar/CartSidebar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (

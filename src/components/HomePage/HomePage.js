@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import SearchBar from "./SearchBar";
-import ProductList from "./ProductList";
-import ProductDetail from "./ProductDetail";
+import SearchBar from "../SearchBar/SearchBar";
+import ProductList from "../ProductList/ProductList";
+import ProductDetail from "../ProductDetail/ProductDetail";
+import "./HomePage.css";
 
 function HomePage({
   products,

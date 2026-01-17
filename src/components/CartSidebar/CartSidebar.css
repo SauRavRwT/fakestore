@@ -1,0 +1,238 @@
+/* Cart Sidebar */
+.cart-sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 380px;
+  background: white;
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15);
+  z-index: 1099;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cart-sidebar.show {
+  transform: translateX(0);
+}
+
+.cart-header {
+  padding: 1.75rem;
+  background-color: #3B5249;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(59, 82, 73, 0.2);
+}
+
+.cart-header h5 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.cart-header .btn-close {
+  background: none;
+  color: white;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.cart-header .btn-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.cart-item {
+  padding: 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.cart-item:hover {
+  background-color: #f7fafc;
+}
+
+.cart-item-title {
+  font-weight: 600;
+  color: #2d3748;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.cart-footer {
+  padding: 1.75rem;
+  border-top: 2px solid #e2e8f0;
+  background-color: #A4B494;
+}
+
+.cart-footer .d-flex {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #cbd5e0;
+  font-weight: 700;
+}
+
+.cart-footer .btn-success {
+  background-color: #519872;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cart-footer .btn-success:hover {
+  background-color: #3B5249;
+  box-shadow: 0 10px 25px rgba(59, 82, 73, 0.3);
+  transform: translateY(-2px);
+}
+
+.cart-footer .btn-secondary {
+  border: 2px solid #cbd5e0;
+  background: white;
+  color: #2d3748;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cart-footer .btn-secondary:hover {
+  background: #f7fafc;
+  border-color: #519872;
+  color: #519872;
+  box-shadow: 0 5px 15px rgba(81, 152, 114, 0.2);
+}
+
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1098;
+  backdrop-filter: blur(3px);
+}
+
+/* Floating Cart Button */
+.floating-cart-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #519872;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(81, 152, 114, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1040;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: floatIn 0.6s ease-out;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.floating-cart-btn:hover {
+  background-color: #3B5249;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(81, 152, 114, 0.5);
+}
+
+.floating-cart-btn:active {
+  transform: translateY(-4px);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #A4B494;
+  color: #34252F;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: badgePulse 0.6s ease-out;
+}
+
+@keyframes badgePulse {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cart-sidebar {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .floating-cart-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cart-sidebar {
+    max-width: 100%;
+  }
+
+  .floating-cart-btn {
+    bottom: 1rem;
+    right: 1rem;
+    width: 52px;
+    height: 52px;
+  }
+
+  .cart-badge {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+  }
+}

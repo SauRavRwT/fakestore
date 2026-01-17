@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaShoppingCart, FaEye } from 'react-icons/fa';
+import "./ProductCard.css";
 
 function ProductCard({ product, onAddToCart, onViewProduct }) {
   return (

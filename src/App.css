@@ -183,14 +183,6 @@ body {
   }
 }
 
-/* Loading Spinner */
-.spinner-border {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-width: 0.35em;
-  color: #519872;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .main-content .container-fluid {

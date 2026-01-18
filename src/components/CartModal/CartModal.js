@@ -1,6 +1,7 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import "./CartModal.css";
+import generateBill from "../Bill/Bill";
 
 function CartModal({
   cart,
@@ -17,7 +18,17 @@ function CartModal({
 
   // Handle checkout
   const handleCheckout = () => {
-    alert("Thank you for your purchase!");
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
+    // Generate PDF bill
+    generateBill(cart, cartPrice);
+
+    // Show success message
+    // alert("Thank you for your purchase! Your bill has been downloaded.");
+
     // Clear cart from state and localStorage
     localStorage.removeItem("cart");
     onClearCart();
@@ -39,7 +50,10 @@ function CartModal({
       {/* Cart Modal */}
       {cartOpen && (
         <div className="cart-modal-overlay" onClick={() => onToggleCart(false)}>
-          <div className="cart-modal-container" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="cart-modal-container"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="cart-header">
               <h5 className="mb-0">
                 <FaShoppingCart className="me-2" />
@@ -52,7 +66,9 @@ function CartModal({
             </div>
             <div className="cart-items">
               {cart.length === 0 ? (
-                <p className="text-muted text-center py-5">Your cart is empty</p>
+                <p className="text-muted text-center py-5">
+                  Your cart is empty
+                </p>
               ) : (
                 cart.map((item) => (
                   <div key={item.id} className="cart-item">
@@ -63,7 +79,9 @@ function CartModal({
                           alt={item.title}
                           className="img-fluid cart-item-image"
                         />
-                        <p className="mb-1 small cart-item-title">{item.title}</p>
+                        <p className="mb-1 small cart-item-title">
+                          {item.title}
+                        </p>
                         <p className="mb-0 text-success small">
                           ${item.price.toFixed(2)} x {item.quantity}
                         </p>
@@ -83,7 +101,9 @@ function CartModal({
               <div className="cart-footer">
                 <div className="d-flex justify-content-between mb-3 pb-3 border-top">
                   <strong>Total:</strong>
-                  <strong className="text-success">${cartPrice.toFixed(2)}</strong>
+                  <strong className="text-success">
+                    ${cartPrice.toFixed(2)}
+                  </strong>
                 </div>
                 <button
                   className="btn btn-success w-100 mb-2"

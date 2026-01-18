@@ -2,7 +2,7 @@ import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import "./CartModal.css";
 
-function CartSidebar({
+function CartModal({
   cart,
   cartOpen,
   onToggleCart,
@@ -106,4 +106,4 @@ function CartSidebar({
   );
 }
 
-export default CartSidebar;
+export default CartModal;

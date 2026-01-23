@@ -1,5 +1,5 @@
-import React from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { FaShoppingCart, FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 import "./CartModal.css";
 import generateBill from "../Bill/Bill";
 
@@ -10,27 +10,62 @@ function CartModal({
   onRemoveFromCart,
   onClearCart,
 }) {
-  const cartTotal = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const cartPrice = cart.reduce(
+  const [cartItems, setCartItems] = useState(cart);
+
+  useEffect(() => {
+    setCartItems(cart);
+  }, [cart]);
+
+  useEffect(() => {
+    const handleCartUpdate = () => {
+      const updatedCart = JSON.parse(localStorage.getItem("cart")) || [];
+      setCartItems(updatedCart);
+    };
+
+    window.addEventListener("cartUpdated", handleCartUpdate);
+    return () => window.removeEventListener("cartUpdated", handleCartUpdate);
+  }, []);
+  const cartTotal = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const cartPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
 
+  const incItem = (itemId) => {
+    const itemIndex = cartItems.findIndex((item) => item.id === itemId);
+    if (itemIndex !== -1) {
+      const updatedCart = [...cartItems];
+      updatedCart[itemIndex].quantity += 1;
+      setCartItems(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+  };
+
+  const decItem = (itemId) => {
+    const itemIndex = cartItems.findIndex((item) => item.id === itemId);
+    if (itemIndex !== -1 && cartItems[itemIndex].quantity > 1) {
+      const updatedCart = [...cartItems];
+      updatedCart[itemIndex].quantity -= 1;
+      setCartItems(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+  };
   // Handle checkout
   const handleCheckout = () => {
-    if (cart.length === 0) {
+    if (cartItems.length === 0) {
       alert("Your cart is empty!");
       return;
     }
 
     // Generate PDF bill
-    generateBill(cart, cartPrice);
+    generateBill(cartItems, cartPrice);
 
     // Show success message
     // alert("Thank you for your purchase! Your bill has been downloaded.");
 
     // Clear cart from state and localStorage
     localStorage.removeItem("cart");
+    setCartItems([]);
     onClearCart();
     onToggleCart(false);
   };
@@ -65,12 +100,12 @@ function CartModal({
               ></button>
             </div>
             <div className="cart-items">
-              {cart.length === 0 ? (
+              {cartItems.length === 0 ? (
                 <p className="text-muted text-center py-5">
                   Your cart is empty
                 </p>
               ) : (
-                cart.map((item) => (
+                cartItems.map((item) => (
                   <div key={item.id} className="cart-item">
                     <div className="d-flex justify-content-between align-items-start">
                       <div className="flex-grow-1">
@@ -86,18 +121,38 @@ function CartModal({
                           ${item.price.toFixed(2)} x {item.quantity}
                         </p>
                       </div>
-                      <button
-                        className="btn btn-sm btn-outline-danger ms-2"
-                        onClick={() => onRemoveFromCart(item.id)}
-                      >
-                        ✕
-                      </button>
+                      <div className="d-flex align-items-center gap-2">
+                        <button
+                          className="btn btn-sm btn-outline-secondary"
+                          onClick={() => decItem(item.id)}
+                        >
+                          <FaMinus />
+                        </button>
+                        <span
+                          className="quantity-display"
+                          style={{ minWidth: "20px", textAlign: "center" }}
+                        >
+                          {item.quantity}
+                        </span>
+                        <button
+                          className="btn btn-sm btn-outline-secondary"
+                          onClick={() => incItem(item.id)}
+                        >
+                          <FaPlus />
+                        </button>
+                        <button
+                          className="btn btn-sm btn-outline-danger ms-auto"
+                          onClick={() => onRemoveFromCart(item.id)}
+                        >
+                          <FaTrash />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))
               )}
             </div>
-            {cart.length > 0 && (
+            {cartItems.length > 0 && (
               <div className="cart-footer">
                 <div className="d-flex justify-content-between mb-3 pb-3 border-top">
                   <strong>Total:</strong>

@@ -1,12 +1,12 @@
 /* Footer */
 footer p {
-  color: #34252F;
+  color: #34252f;
   font-weight: 500;
 }
 
 footer a {
   text-decoration: none;
-  color: #3B5249;
+  color: #3b5249;
   font-weight: 600;
   transition: all 0.3s ease;
 }

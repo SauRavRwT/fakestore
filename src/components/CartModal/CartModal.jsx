@@ -1,7 +1,25 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaShoppingCart, FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 import "./CartModal.css";
 import generateBill from "../Bill/Bill";
+
+/**
+ * @typedef {Object} CartItem
+ * @property {number | string} id
+ * @property {string} title
+ * @property {number} price
+ * @property {number} quantity
+ * @property {string} [image]
+ */
+
+/**
+ * @typedef {Object} CartModalProps
+ * @property {CartItem[]} cart
+ * @property {boolean} cartOpen
+ * @property {(open: boolean) => void} onToggleCart
+ * @property {(id: number | string) => void} onRemoveFromCart
+ * @property {() => void} onClearCart
+ */
 
 function CartModal({
   cart,
@@ -18,7 +36,7 @@ function CartModal({
 
   useEffect(() => {
     const handleCartUpdate = () => {
-      const updatedCart = JSON.parse(localStorage.getItem("cart")) || [];
+      const updatedCart = JSON.parse(localStorage.getItem("cart") || "[]");
       setCartItems(updatedCart);
     };
 

@@ -49,7 +49,7 @@
 
 .cart-header {
   padding: 1.75rem;
-  background-color: #3B5249;
+  background-color: #3b5249;
   border-radius: 16px 16px 0 0;
   color: white;
   display: flex;
@@ -116,7 +116,7 @@
 .cart-footer {
   padding: 1.75rem;
   border-top: 2px solid #e2e8f0;
-  background-color: #A4B494;
+  background-color: #a4b494;
   border-radius: 0 0 16px 16px;
 }
 
@@ -136,7 +136,7 @@
 }
 
 .cart-footer .btn-success:hover {
-  background-color: #3B5249;
+  background-color: #3b5249;
   box-shadow: 0 10px 25px rgba(59, 82, 73, 0.3);
   transform: translateY(-2px);
 }
@@ -203,7 +203,7 @@
 }
 
 .floating-cart-btn:hover {
-  background-color: #3B5249;
+  background-color: #3b5249;
   transform: translateY(-8px);
   box-shadow: 0 12px 32px rgba(81, 152, 114, 0.5);
 }
@@ -216,8 +216,8 @@
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: #A4B494;
-  color: #34252F;
+  background-color: #a4b494;
+  color: #34252f;
   border-radius: 50%;
   width: 28px;
   height: 28px;

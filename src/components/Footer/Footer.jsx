@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Footer.css";
 
@@ -27,9 +26,7 @@ function Footer() {
             <Link to="/about">About Us</Link>
           )}
         </p>
-        <p>
-          &copy; {new Date().getFullYear()} FakeStore. All rights reserved.
-        </p>
+        <p>&copy; {new Date().getFullYear()} FakeStore. All rights reserved.</p>
       </div>
     </footer>
   );

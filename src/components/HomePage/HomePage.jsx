@@ -29,7 +29,7 @@ function HomePage({
       const filtered = products.filter(
         (product) =>
           product.title.toLowerCase().includes(term.toLowerCase()) ||
-          product.description.toLowerCase().includes(term.toLowerCase())
+          product.description.toLowerCase().includes(term.toLowerCase()),
       );
       setFilteredProducts(filtered);
     }

@@ -1,5 +1,4 @@
-import React from 'react';
-import { FaShoppingCart, FaEye } from 'react-icons/fa';
+import { FaShoppingCart, FaEye } from "react-icons/fa";
 import "./ProductCard.css";
 
 function ProductCard({ product, onAddToCart, onViewProduct }) {
@@ -19,7 +18,7 @@ function ProductCard({ product, onAddToCart, onViewProduct }) {
         </p>
         <div className="product-rating mb-2">
           <span className="badge bg-warning text-dark">
-            ★ {product.rating?.rate || 'N/A'} ({product.rating?.count || 0})
+            ★ {product.rating?.rate || "N/A"} ({product.rating?.count || 0})
           </span>
         </div>
         <div className="product-price mb-3">

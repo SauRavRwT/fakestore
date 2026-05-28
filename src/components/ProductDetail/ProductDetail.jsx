@@ -1,5 +1,4 @@
-import React from 'react';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes } from "react-icons/fa";
 import "./ProductDetail.css";
 
 function ProductDetail({ product, onClose }) {
@@ -10,11 +9,7 @@ function ProductDetail({ product, onClose }) {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h5 className="modal-title">{product.title}</h5>
-          <button
-            className="btn-close"
-            onClick={onClose}
-            aria-label="Close"
-          >
+          <button className="btn-close" onClick={onClose} aria-label="Close">
             <FaTimes />
           </button>
         </div>
@@ -25,14 +20,17 @@ function ProductDetail({ product, onClose }) {
                 src={product.image}
                 alt={product.title}
                 className="img-fluid"
-                style={{ maxHeight: '400px', objectFit: 'contain' }}
+                style={{ maxHeight: "400px", objectFit: "contain" }}
               />
             </div>
             <div className="col-md-8">
               <div className="mb-3">
-                <span className="badge bg-secondary me-2">{product.category}</span>
+                <span className="badge bg-secondary me-2">
+                  {product.category}
+                </span>
                 <span className="badge bg-warning text-dark">
-                  ★ {product.rating?.rate || 'N/A'} ({product.rating?.count || 0} reviews)
+                  ★ {product.rating?.rate || "N/A"} (
+                  {product.rating?.count || 0} reviews)
                 </span>
               </div>
 
@@ -46,9 +44,15 @@ function ProductDetail({ product, onClose }) {
               <div className="mb-4">
                 <h6>Product Details</h6>
                 <ul className="list-unstyled">
-                  <li><strong>Category:</strong> {product.category}</li>
-                  <li><strong>Rating:</strong> {product.rating?.rate || 'N/A'}/5</li>
-                  <li><strong>Reviews:</strong> {product.rating?.count || 0}</li>
+                  <li>
+                    <strong>Category:</strong> {product.category}
+                  </li>
+                  <li>
+                    <strong>Rating:</strong> {product.rating?.rate || "N/A"}/5
+                  </li>
+                  <li>
+                    <strong>Reviews:</strong> {product.rating?.count || 0}
+                  </li>
                 </ul>
               </div>
             </div>

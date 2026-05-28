@@ -22,7 +22,7 @@
 }
 
 .search-bar-container .input-group-text {
-  background-color: #3B5249 !important;
+  background-color: #3b5249 !important;
   border: none !important;
   color: white !important;
   font-size: 1.1rem;
@@ -37,7 +37,7 @@
 }
 
 .search-bar-container input.form-control::placeholder {
-  color: #A4B494;
+  color: #a4b494;
   font-weight: 500;
 }
 

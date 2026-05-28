@@ -1,9 +1,7 @@
-import React from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch } from "react-icons/fa";
 import "./SearchBar.css";
 
 function SearchBar({ searchTerm, onSearchChange }) {
-    
   return (
     <div className="search-bar-container mb-4">
       <div className="input-group">

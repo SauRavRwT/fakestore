@@ -51,12 +51,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #A4B494;
+  background-color: #a4b494;
 }
 
 .modal-title {
   font-weight: 700;
-  color: #3B5249;
+  color: #3b5249;
   margin: 0;
   font-size: 1.5rem;
 }
@@ -101,7 +101,7 @@
 
 .modal-body h6 {
   font-weight: 700;
-  color: #3B5249;
+  color: #3b5249;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
 }

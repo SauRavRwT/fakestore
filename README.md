@@ -46,10 +46,10 @@ Follow these steps to set up the project locally:
 
 3. **Start the development server**:
    ```sh
-   npm start
+   npm run dev
    ```
 
-   This will run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes.
+   This will run the app in development mode. Open [http://localhost:5173/fakestore](http://localhost:5173/fakestore) to view it in your browser. The page will reload when you make changes.
 
 ### Available Scripts
 

@@ -1,5 +1,17 @@
 import jsPDF from "jspdf";
 
+/**
+ * @typedef {Object} CartItem
+ * @property {string} title
+ * @property {number} price
+ * @property {number} quantity
+ */
+
+/**
+ * @param {CartItem[]} cartItems
+ * @param {number} totalPrice
+ * @returns {void}
+ */
 const generateBill = (cartItems, totalPrice) => {
   const doc = new jsPDF();
 
@@ -12,7 +24,7 @@ const generateBill = (cartItems, totalPrice) => {
 
   // Header
   doc.setFontSize(20);
-  doc.text("FakeStore BILL", 105, 15, { align: "center"});
+  doc.text("FakeStore BILL", 105, 15, { align: "center" });
   doc.setFont("Lexend", "Bold");
 
   // Date and Bill Info
@@ -59,14 +71,14 @@ const generateBill = (cartItems, totalPrice) => {
 
   // Total Section
   yPosition += 8;
-  doc.setFont(undefined, "bold");
+  doc.setFont("Lexend", "bold");
   doc.setFontSize(12);
   doc.text("TOTAL:", 150, yPosition);
   doc.text(`$${totalPrice.toFixed(2)}`, 170, yPosition);
 
   // Footer
   doc.setFontSize(9);
-  doc.setFont(undefined, "normal");
+  doc.setFont("Lexend", "normal");
   doc.text("Thank you for your purchase!", 105, 280, { align: "center" });
 
   // Save the PDF
